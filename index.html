@@ -1,248 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>MyBlog</title>
+<meta charset="UTF-8">
+<title>MyBlog.com</title>
 
-    <style>
-        /* RESET */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+/* RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            font-family: serif;
-        }
+/* LAYOUT */
+body {
+    font-family: Arial, sans-serif;
+}
 
-        /* JUMP MENU */
-        #jumpMenu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 15%;
-            height: 100vh;
-            background: goldenrod;
-            padding: 20px;
-            overflow-y: auto;
-        }
+nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 220px;
+    height: 100vh;
+    background: black;
+    padding-top: 20px;
+}
 
-        #jumpMenu h2 {
-            margin-bottom: 20px;
-        }
+main {
+    margin-left: 220px;
+}
 
-        #jumpMenu a {
-            display: block;
-            margin: 12px 0;
-            color: blue;
-            text-decoration: underline;
-        }
+/* NAV BUTTONS */
+nav button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background: blue;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 2px solid black;
+}
 
-        /* HEADER */
-        header {
-            position: fixed;
-            top: 0;
-            left: 15%;
-            width: 85%;
-            background: red;
-            text-align: center;
-            z-index: 10;
-        }
+nav button:hover {
+    background: #0b3cff;
+}
 
-        header p {
-            font-size: 2rem;
-            padding: 15px 0;
-        }
+/* RECENT ARTICLES DROPDOWN */
+#recentArticles {
+    position: relative;
+}
 
-        header nav {
-            display: flex;
-            justify-content: space-around;
-            background: black;
-            padding: 10px 0;
-        }
+#jumpMenu {
+    list-style: none;
+    background: goldenrod;
+    display: none;
+}
 
-        header button {
-            background: blue;
-            color: white;
-            border: none;
-            padding: 10px 30px;
-            font-size: 1rem;
-            cursor: pointer;
-        }
+#recentArticles:hover + #jumpMenu,
+#jumpMenu:hover {
+    display: block;
+}
 
-        /* MAIN CONTENT */
-        main {
-            margin-left: 15%;
-            padding-top: 150px;
-            padding-bottom: 180px;
-            min-height: 200vh; /* forces scrolling */
-        }
+#jumpMenu li a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+    color: blue;
+}
 
-        main h1 {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+#jumpMenu li a:hover {
+    background: blue;
+    color: white;
+}
 
-        /* ARTICLE GRID */
-        #container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 35px;
-            padding: 0 20px;
-        }
+/* HEADER */
+header {
+    background: red;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        article {
-            width: 300px;
-            min-height: 420px;
-        }
+header p {
+    font-size: 36px;
+    color: black;
+}
 
-        article h2 {
-            margin-bottom: 12px;
-        }
+/* PAGE TITLE */
+h1 {
+    text-align: center;
+    margin: 25px 0;
+    font-family: "Times New Roman", serif;
+}
 
-        article p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
+/* ARTICLES GRID */
+#container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding: 20px;
+}
 
-        article a {
-            color: blue;
-        }
+/* ARTICLE STYLING */
+article {
+    color: #b5b5b5;
+    max-height: 260px;
+    overflow: hidden;
+    transition: all 2s ease;
+}
 
-        /* THANK YOU BOX */
-        #thanks {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: lightblue;
-            padding: 20px 30px;
-            font-size: 1.6rem;
-            border: 1px solid black;
-        }
+article:hover {
+    color: #333;
+    max-height: 1200px;
+}
 
-        /* FOOTER */
-        footer {
-            margin-top: 80px;
-            padding: 30px;
-            background: #f2f2f2;
-        }
-    </style>
+/* DROP CAP */
+article p:first-of-type::first-letter {
+    font-family: "Times New Roman", serif;
+    font-size: 36px;
+}
+
+/* READ MORE LINKS */
+article a[href*="google"] {
+    position: relative;
+    padding-right: 24px;
+    text-decoration: none;
+    color: blue;
+}
+
+article a[href*="google"]::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 2px;
+    width: 16px;
+    height: 16px;
+    background-image: url("arrowarrow.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* THANK YOU BOX */
+#thanks {
+    margin: 40px;
+}
+
+#thanks a {
+    background: lightblue;
+    padding: 15px 25px;
+    font-size: 24px;
+    display: inline-block;
+}
+
+/* FOOTER */
+footer {
+    border-top: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 40px;
+}
+</style>
 </head>
 
 <body>
 
-<nav id="jumpMenu">
-    <h2>Jump to an Article</h2>
-    <a href="#a1">Article 1</a>
-    <a href="#a2">Article 2</a>
-    <a href="#a3">Article 3</a>
-    <a href="#a4">Article 4</a>
-    <a href="#a5">Article 5</a>
-    <a href="#a6">Article 6</a>
-    <a href="#a7">Article 7</a>
-    <a href="#a8">Article 8</a>
-    <a href="#a9">Article 9</a>
-    <a href="#a10">Article 10</a>
+<nav>
+    <button id="recentArticles">Recent Articles</button>
+    <ul id="jumpMenu">
+        <li><a href="#a1">Article 1</a></li>
+        <li><a href="#a2">Article 2</a></li>
+        <li><a href="#a3">Article 3</a></li>
+        <li><a href="#a4">Article 4</a></li>
+        <li><a href="#a5">Article 5</a></li>
+        <li><a href="#a6">Article 6</a></li>
+        <li><a href="#a7">Article 7</a></li>
+        <li><a href="#a8">Article 8</a></li>
+        <li><a href="#a9">Article 9</a></li>
+        <li><a href="#a10">Article 10</a></li>
+    </ul>
+
+    <button>Services</button>
+    <button>Mission</button>
+    <button>About Us</button>
 </nav>
 
 <main>
-
 <header>
     <p>MyBlog.com</p>
-    <nav>
-        <button>Recent Articles</button>
-        <button>Services</button>
-        <button>Mission</button>
-        <button>About Us</button>
-    </nav>
 </header>
 
 <h1>Recent Journal Articles</h1>
 
 <div id="container">
-
-    <article id="a1">
-        <h2>Article 1</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eros magna, efficitur a facilisis id, venenatis in elit. Nulla dictum vel metus at auctor. Integer venenatis pretium mauris id ultrices. Duis sagittis ligula eget erat hendrerit, ut lobortis libero mollis.</p>
-        <p>Quisque placerat, lorem sed mattis rhoncus, purus tortor sodales tortor, sed viverra turpis orci in neque. Fusce ullamcorper euismod diam tincidunt vehicula.</p>
-        <a href="#">Read more...</a>
-    </article>
-
-    <article id="a2">
-        <h2>Article 2</h2>
-        <p>Sed sed neque eget justo venenatis rutrum vitae quis ante. Sed ut iaculis dui, eget commodo nisi. Etiam et arcu ipsum. Praesent porta eu nisi a malesuada.</p>
-        <p>Nunc cursus facilisis ligula, in porttitor nisl pulvinar ultrices. Pellentesque consectetur venenatis ex, non lacinia metus lobortis vel.</p>
-        <a href="#">Read more...</a>
-    </article>
-
-    <article id="a3">
-        <h2>Article 3</h2>
-        <p>Vivamus lectus ante, venenatis sed placerat id, pretium a est. Nulla facilisi. Curabitur vestibulum malesuada lectus, nec gravida nibh blandit ultrices.</p>
-        <p>Donec dictum luctus placerat. Vestibulum et mi quis tortor congue suscipit non at libero.</p>
-        <a href="#">Read more...</a>
-    </article>
-
-    <article id="a4">
-        <h2>Article 4</h2>
-        <p>Proin mi ipsum, egestas in diam nec, volutpat scelerisque est. Proin quis ullamcorper lorem. Quisque fringilla non magna ac suscipit.</p>
-        <p>Sed scelerisque, massa ut aliquam faucibus, nisi ante volutpat velit, vel pretium mi erat ut ante.</p>
-        <a href="#">Read more...</a>
-    </article>
-
-    <article id="a5">
-        <h2>Article 5</h2>
-        <p>Sed suscipit vestibulum felis ut aliquam. Pellentesque tincidunt justo non velit consectetur consectetur. Etiam malesuada massa et felis placerat tincidunt.</p>
-        <p>Nam mollis cursus odio, eget interdum neque feugiat eu.</p>
-        <a href="#">Read more...</a>
-    </article>
-
-    <article id="a6">
-        <h2>Article 6</h2>
-        <p>Phasellus nunc sapien, dignissim in magna id, egestas condimentum erat. Fusce ac consectetur velit, ac iaculis nisi.</p>
-        <p>Pellentesque volutpat mi non arcu sodales, id euismod sem pulvinar.</p>
-        <a href="#">Read more...</a>
-    </article>
-
-    <article id="a7">
-        <h2>Article 7</h2>
-        <p>Mauris tempus ligula euismod massa commodo vehicula. Praesent euismod feugiat posuere. Etiam convallis tellus quis eleifend pulvinar.</p>
-        <p>Nullam tempor, turpis tincidunt sagittis suscipit, velit enim iaculis leo.</p>
-        <a href="#">Read more...</a>
-    </article>
-
-    <article id="a8">
-        <h2>Article 8</h2>
-        <p>Integer at ligula semper, viverra enim et, malesuada urna. Praesent porttitor, eros ut pellentesque imperdiet.</p>
-        <p>Suspendisse potenti. Proin sollicitudin placerat orci.</p>
-        <a href="#">Read more...</a>
-    </article>
-
-    <article id="a9">
-        <h2>Article 9</h2>
-        <p>Sed at augue nec turpis condimentum vulputate. Donec tincidunt, turpis dapibus viverra vehicula.</p>
-        <p>Vivamus odio dolor, eleifend non mi venenatis.</p>
-        <a href="#">Read more...</a>
-    </article>
-
-    <article id="a10">
-        <h2>Article 10</h2>
-        <p>Sed erat elit, maximus ut ullamcorper vitae, mattis vel ante. Donec tempus a libero et consectetur.</p>
-        <p>Nullam venenatis purus eget porttitor fringilla.</p>
-        <a href="#">Read more...</a>
-    </article>
-
+    <!-- ARTICLES (IDs preserved exactly) -->
+    <article id="a1"><h2>Article 1</h2><p>Lorem ipsum dolor sit amet...</p><p><a href="https://www.google.com">Read more...</a></p></article>
+    <article id="a2"><h2>Article 2</h2><p>Sed sed neque eget justo venenatis...</p><p><a href="https://www.google.com">Read more...</a></p></article>
+    <article id="a3"><h2>Article 3</h2><p>Vivamus lectus ante...</p><p><a href="https://www.google.com">Read more...</a></p></article>
+    <article id="a4"><h2>Article 4</h2><p>Proin mi ipsum...</p><p><a href="https://www.google.com">Read more...</a></p></article>
 </div>
 
-<p id="thanks">Thank you for visiting!</p>
+<p id="thanks"><a href="#">Thank you for visiting!</a></p>
 
 <footer>
     <p>Contact Us!</p>
 </footer>
-
 </main>
 
 </body>
 </html>
+
 
