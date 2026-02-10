@@ -12,26 +12,22 @@
     padding: 0;
 }
 
-/* LAYOUT */
+/* BASE */
 body {
     font-family: Arial, sans-serif;
 }
 
+/* NAVIGATION */
 nav {
     position: fixed;
-    left: 0;
     top: 0;
+    left: 0;
     width: 220px;
     height: 100vh;
     background: black;
     padding-top: 20px;
 }
 
-main {
-    margin-left: 220px;
-}
-
-/* NAV BUTTONS */
 nav button {
     width: 100%;
     padding: 15px;
@@ -44,18 +40,18 @@ nav button {
 }
 
 nav button:hover {
-    background: #0b3cff;
+    background: #0033ff;
 }
 
-/* RECENT ARTICLES DROPDOWN */
+/* JUMP MENU */
 #recentArticles {
     position: relative;
 }
 
 #jumpMenu {
+    display: none;
     list-style: none;
     background: goldenrod;
-    display: none;
 }
 
 #recentArticles:hover + #jumpMenu,
@@ -75,6 +71,11 @@ nav button:hover {
     color: white;
 }
 
+/* MAIN CONTENT */
+main {
+    margin-left: 220px;
+}
+
 /* HEADER */
 header {
     background: red;
@@ -86,17 +87,16 @@ header {
 
 header p {
     font-size: 36px;
-    color: black;
 }
 
-/* PAGE TITLE */
+/* TITLE */
 h1 {
     text-align: center;
-    margin: 25px 0;
+    margin: 30px 0;
     font-family: "Times New Roman", serif;
 }
 
-/* ARTICLES GRID */
+/* ARTICLE GRID */
 #container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -104,17 +104,17 @@ h1 {
     padding: 20px;
 }
 
-/* ARTICLE STYLING */
+/* ARTICLES */
 article {
-    color: #b5b5b5;
-    max-height: 260px;
+    color: #b8b8b8;
+    max-height: 520px;       /* MORE TEXT VISIBLE */
     overflow: hidden;
     transition: all 2s ease;
 }
 
 article:hover {
     color: #333;
-    max-height: 1200px;
+    max-height: 1600px;
 }
 
 /* DROP CAP */
@@ -123,12 +123,12 @@ article p:first-of-type::first-letter {
     font-size: 36px;
 }
 
-/* READ MORE LINKS */
+/* READ MORE LINKS + ARROW */
 article a[href*="google"] {
     position: relative;
     padding-right: 24px;
-    text-decoration: none;
     color: blue;
+    text-decoration: none;
 }
 
 article a[href*="google"]::after {
@@ -143,23 +143,25 @@ article a[href*="google"]::after {
     background-repeat: no-repeat;
 }
 
-/* THANK YOU BOX */
+/* THANK YOU FIXED */
 #thanks {
-    margin: 40px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
 }
 
 #thanks a {
     background: lightblue;
     padding: 15px 25px;
     font-size: 24px;
-    display: inline-block;
+    text-decoration: underline;
 }
 
 /* FOOTER */
 footer {
     border-top: 1px solid #ccc;
     padding: 20px;
-    margin-top: 40px;
+    margin: 40px;
 }
 </style>
 </head>
@@ -194,21 +196,40 @@ footer {
 <h1>Recent Journal Articles</h1>
 
 <div id="container">
-    <!-- ARTICLES (IDs preserved exactly) -->
-    <article id="a1"><h2>Article 1</h2><p>Lorem ipsum dolor sit amet...</p><p><a href="https://www.google.com">Read more...</a></p></article>
-    <article id="a2"><h2>Article 2</h2><p>Sed sed neque eget justo venenatis...</p><p><a href="https://www.google.com">Read more...</a></p></article>
-    <article id="a3"><h2>Article 3</h2><p>Vivamus lectus ante...</p><p><a href="https://www.google.com">Read more...</a></p></article>
-    <article id="a4"><h2>Article 4</h2><p>Proin mi ipsum...</p><p><a href="https://www.google.com">Read more...</a></p></article>
+
+<article id="a1">
+<h2>Article 1</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eros magna, efficitur a facilisis id, venenatis in elit. Nulla dictum vel metus at auctor. Integer venenatis pretium mauris id ultrices. Duis sagittis ligula eget erat hendrerit, ut lobortis libero mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie vehicula quam, non accumsan odio pulvinar ac.</p>
+<p><a href="https://www.google.com">Read more...</a></p>
+</article>
+
+<article id="a2">
+<h2>Article 2</h2>
+<p>Sed sed neque eget justo venenatis rutrum vitae quis ante. Sed ut iaculis dui, eget commodo nisi. Etiam et arcu ipsum. Praesent porta eu nisi a malesuada. Nunc cursus facilisis ligula, in porttitor nisl pulvinar ultrices.</p>
+<p><a href="https://www.google.com">Read more...</a></p>
+</article>
+
+<article id="a3">
+<h2>Article 3</h2>
+<p>Vivamus lectus ante, venenatis sed placerat id, pretium a est. Nulla facilisi. Curabitur vestibulum malesuada lectus, nec gravida nibh blandit ultrices.</p>
+<p><a href="https://www.google.com">Read more...</a></p>
+</article>
+
+<article id="a4">
+<h2>Article 4</h2>
+<p>Proin mi ipsum, egestas in diam nec, volutpat scelerisque est. Proin quis ullamcorper lorem. Quisque fringilla non magna ac suscipit.</p>
+<p><a href="https://www.google.com">Read more...</a></p>
+</article>
+
 </div>
+
+<footer>
+<p>Contact Us!</p>
+</footer>
+
+</main>
 
 <p id="thanks"><a href="#">Thank you for visiting!</a></p>
 
-<footer>
-    <p>Contact Us!</p>
-</footer>
-</main>
-
 </body>
 </html>
-
-
